@@ -19,7 +19,7 @@ const PostPage = () => {
             setError(null);
 
             try {
-                const response = await axios.get(`http://localhost:5000/api/posts/slug/${slug}`);
+                const response = await axios.get(`${process.env.REACT_APP_API_URL}/posts/slug/${slug}`);
                 setPost(response.data);
             } 
             catch (err) {
