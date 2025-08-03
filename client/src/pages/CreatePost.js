@@ -6,7 +6,7 @@ import './CreatePost.css'
 const CreatePost = () => {
     const [title, setTitle] = useState('');
     const [markdownContent, setMarkdownContent] = useState('');
-    const [catagories, setCatagories] = useState('');
+    const [categories, setCategories] = useState('');
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
@@ -22,13 +22,13 @@ const CreatePost = () => {
             return;
         }
 
-        const categoriesArray = catagories.split(',').map(cat => cat.trim()).filter(cat => cat);
+        const categoriesArray = categories.split(',').map(cat => cat.trim()).filter(cat => cat);
 
         try {
             await apiService.post('/posts', {
                 title,
                 markdownContent,
-                catagories: categoriesArray,
+                categories: categoriesArray,
                 author: 'Admin',
             });
 
@@ -74,8 +74,8 @@ const CreatePost = () => {
                         type="text"
                         id="categories"
                         className="form-control"
-                        value={catagories}
-                        onChange={(e) => setCatagories(e.target.value)}
+                        value={categories}
+                        onChange={(e) => setCategories(e.target.value)}
                         placeholder="e.g., React, Web Development, Tutorial"
                         disabled={loading}
                     />
