@@ -1,5 +1,4 @@
 import axios from "axios";
-import { config } from "dotenv";
 const token = localStorage.getItem('jwt');
 
 const apiService = axios.create({
